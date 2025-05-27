@@ -14,7 +14,7 @@ h1 {
   margin: 10px;
 }
 
-.comment-table {
+.wrapper {
   margin: 10px;
 }
 
@@ -48,6 +48,7 @@ tr:nth-child(even) {
   padding: 10px;
   text-align: center;
   box-shadow: 0 -2px 5px rgba(201, 143, 143, 0.1);
+  z-index: 1000;
 }
 
 button {
@@ -60,4 +61,10 @@ button {
 
 button:hover {
   background: rgba(26, 25, 25, 0.1);
+}
+
+button.active {
+  background-color: brown;
+  color: white;
+  border-color: rgba(26, 25, 25, 0.1);
 }

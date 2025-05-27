@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="Styles.css">
-  <script src="scripts.js"></script>
+  <script src="scripts.js" defer></script>
   <title>Comments</title>
 </head>
 
@@ -14,26 +14,22 @@
     <h1>Commets</h1>
   </sectiobn>
 
-  <section class="comment-table">
+  <section class="wrapper">
     <table>
-      <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Body</th>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>E-Mail</th>
+          <th>Body</th>
+        </tr>
+      </thead>
+      <tbody class="table-b">  
+      </tbody>
     </table>
   </section>
 
-  <section class="pagination">
-    <button data-id="btn1">Previous</button>
-    <button data-id="btn2">1</button>
-    <button data-id="btn3">Next</button>
-  </section>
+  <section class="pagination"></section>
 
 </body>
 
