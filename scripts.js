@@ -1,5 +1,3 @@
-const pageButtons = document.querySelectorAll(button);
-
 let commentsDetails = [];
 
 function loadComments() {
