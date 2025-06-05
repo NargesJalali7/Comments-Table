@@ -12,7 +12,7 @@ function loadComments() {
         commentsDetails.forEach((comment) => {
           const row = `
       <tr>
-        <td>${comment.id}</td>
+        <td class='numbers'>${comment.id}</td>
         <td>${comment.name}</td>
         <td>${comment.email}</td>
         <td>${comment.body}</td>

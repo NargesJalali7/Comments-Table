@@ -6,16 +6,24 @@
 body {
   overflow-x: auto;
   overflow-y: auto;
+  background-color: rgb(184, 171, 207);
 }
 
 h1 {
   font-family: arial, sans-serif;
+  font-size: 3rem;
+  background: linear-gradient(90deg, #501a50, #541a75);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   text-align: center;
   margin: 10px;
+  margin-top: 30px;
 }
 
 .wrapper {
-  margin: 10px;
+  margin: 10px 50px;
+  padding: 30px;
+  font-size: 1rem;
 }
 
 
@@ -28,15 +36,24 @@ table {
 }
 
 th, td {
-  border: 1px solid rgba(226, 157, 157);
-  text-align: left;
+  border: 2px solid #0c0f2c;;
+  text-align: center;
   padding: 8px;
   word-wrap: break-word;
 }
 
 
+th {
+  background-color:#9f2aaa;
+}
+
+
 tr:nth-child(even) {
-  background-color: rgba(226, 157, 157);
+  background-color: #b273d6;
+}
+
+.numbers {
+  background-color: #9f2aaa;
 }
 
 .pagination {
