@@ -61,8 +61,8 @@ tr:nth-child(even) {
   bottom: 0;
   left: 0;
   width: 100%;
-  background: rgb(226, 157, 157);
-  padding: 10px;
+  background:#501a50;
+  padding: 20px;
   text-align: center;
   box-shadow: 0 -2px 5px rgba(201, 143, 143, 0.1);
   z-index: 1000;
