@@ -8,10 +8,9 @@ function loadComments() {
     })
     .then((commentText) => {
       commentsDetails = commentText;
-    })
-    .then(function renderComments() {
-      commentsDetails.forEach((comment) => {
-        const row = `
+      function renderComments() {
+        commentsDetails.forEach((comment) => {
+          const row = `
       <tr>
         <td>${comment.id}</td>
         <td>${comment.name}</td>
@@ -19,9 +18,11 @@ function loadComments() {
         <td>${comment.body}</td>
       </tr>
       `;
-        tableBody.innerHTML += row;
-      });
+          tableBody.innerHTML += row;
+        });
+      }
+      renderComments();
     });
 }
 
-renderComments();
+loadComments();
