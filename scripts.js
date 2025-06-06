@@ -4,6 +4,7 @@ const paginationContainer = document.querySelector(".pagination");
 
 const commentsPerPage = 10;
 let currentPage = 1;
+let currentChunk = 0;
 
 function loadComments() {
   fetch("https://jsonplaceholder.typicode.com/comments")
@@ -17,9 +18,11 @@ function loadComments() {
 
 function renderComments() {
   tableBody.innerHTML = "";
+
   const startIndex = (currentPage - 1) * commentsPerPage;
   const endIndex = startIndex + commentsPerPage;
   const currentComments = commentsDetails.slice(startIndex, endIndex);
+
   let rows = "";
   currentComments.forEach((comment) => {
     rows += `
@@ -39,23 +42,53 @@ function renderPaginationButtons() {
   paginationContainer.innerHTML = "";
 
   const pageCount = Math.ceil(commentsDetails.length / commentsPerPage);
+  const pagesPerChunk = 5;
+  const totalChunks = Math.ceil(pageCount / pagesPerChunk);
 
-  for (let i = 1; i <= pageCount; i++) {
-    const btn = document.createElement("button");
-    btn.innerText = i;
+  if (pageCount === 0) return;
 
-    if (i === currentPage) {
-      btn.classList.add("active");
+  const previousBotton = document.createElement("button");
+  previousBotton.innerText = "Previous";
+  previousBotton.disabled = currentChunk === 0;
+  previousBotton.addEventListener("click", () => {
+    if (currentChunk > 0) {
+      currentChunk--;
+      currentPage = currentChunk * pagesPerChunk + 1;
+      renderComments();
+      renderPaginationButtons();
     }
+  });
+  paginationContainer.appendChild(previousBotton);
 
-    btn.addEventListener("click", () => {
+  const startPage = currentChunk * pagesPerChunk + 1;
+  const endPage = Math.min(startPage + pagesPerChunk - 1, pageCount);
+
+  for (let i = startPage; i <= endPage; i++) {
+    const botton = document.createElement("button");
+    botton.innerText = i;
+    if (i === currentPage) {
+      botton.classList.add("active");
+    }
+    botton.addEventListener("click", () => {
       currentPage = i;
       renderComments();
       renderPaginationButtons();
     });
-
-    paginationContainer.appendChild(btn);
+    paginationContainer.appendChild(botton);
   }
+
+  const nextBotton = document.createElement("button");
+  nextBotton.innerText = "Next";
+  nextBotton.disabled = currentChunk >= totalChunks - 1;
+  nextBotton.addEventListener("click", () => {
+    if (currentChunk < totalChunks - 1) {
+      currentChunk++;
+      currentPage = currentChunk * pagesPerChunk + 1;
+      renderComments();
+      renderPaginationButtons();
+    }
+  });
+  paginationContainer.appendChild(nextBotton);
 }
 
 loadComments();
